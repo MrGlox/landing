@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 651 640">
+  <defs>
+    <linearGradient id="pattern1-a" x1="50%" x2="50%" y1="4.165%" y2="104.976%">
+      <stop offset="0%" stop-color="#4A1F7A"/>
+      <stop offset="59.446%" stop-color="#CD5146"/>
+      <stop offset="100%" stop-color="#FFC649"/>
+    </linearGradient>
+    <linearGradient id="pattern1-c" x1="50%" x2="50%" y1="96.764%" y2="3.62%">
+      <stop offset="0%" stop-color="#3CFAFE"/>
+      <stop offset="25.7%" stop-color="#2CA7CF"/>
+      <stop offset="63.313%" stop-color="#994BF6"/>
+      <stop offset="100%" stop-color="#FC08F8"/>
+    </linearGradient>
+    <filter id="pattern1-b" width="307.5%" height="307.5%" x="-103.8%" y="-103.8%" filterUnits="objectBoundingBox">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="50"/>
+    </filter>
+    <filter id="pattern1-d" width="415.8%" height="415.8%" x="-157.9%" y="-157.9%" filterUnits="objectBoundingBox">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="50"/>
+    </filter>
+  </defs>
+  <g fill="none" fill-rule="evenodd">
+    <path fill="url(#pattern1-a)" fill-rule="nonzero" d="M164.466 163.372c28.202-28.203 28.162-73.968-.09-102.22-28.253-28.253-74.018-28.293-102.221-.09-28.203 28.202-28.162 73.968.09 102.22 28.252 28.252 74.018 28.292 102.22.09z" transform="rotate(45 -42.804 462.553)"/>
+    <path fill="url(#pattern1-a)" fill-rule="nonzero" d="M164.466 163.372c28.202-28.203 28.162-73.968-.09-102.22-28.253-28.253-74.018-28.293-102.221-.09-28.203 28.202-28.162 73.968.09 102.22 28.252 28.252 74.018 28.292 102.22.09z" filter="url(#pattern1-b)" transform="rotate(45 -42.804 462.553)"/>
+    <g stroke="#D8D8D8" stroke-linecap="square">
+      <path d="M230.764 350.608l62.023.055M211.817 350.577l10.237.009M250.145 344.404l10.236.01M245.027 337.829l10.238.008M203.72 350.57l2.271.002M242.047 344.397l2.272.002M227.437 337.084l2.271.001M267.35 344.785l69.12.06M270.33 338.58l39.697.036"/>
+    </g>
+    <path fill="url(#pattern1-c)" d="M135.405 100.79c18.533 18.533 48.608 18.506 67.174-.06 18.566-18.565 18.592-48.64.059-67.173-18.533-18.533-48.608-18.506-67.174.06-18.565 18.565-18.592 48.64-.059 67.173z" transform="rotate(-45 527.136 -70.162)"/>
+    <path fill="url(#pattern1-c)" d="M135.405 100.79c18.533 18.533 48.608 18.506 67.174-.06 18.566-18.565 18.592-48.64.059-67.173-18.533-18.533-48.608-18.506-67.174.06-18.565 18.565-18.592 48.64-.059 67.173z" filter="url(#pattern1-d)" transform="rotate(-45 527.136 -70.162)"/>
+  </g>
+</svg>

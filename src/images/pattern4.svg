@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 652 652">
+  <defs>
+    <linearGradient id="a" x1="50%" x2="50%" y1="96.764%" y2="3.62%">
+      <stop offset="0%" stop-color="#3CFAFE"/>
+      <stop offset="25.7%" stop-color="#2CA7CF"/>
+      <stop offset="63.313%" stop-color="#994BF6"/>
+      <stop offset="100%" stop-color="#FC08F8"/>
+    </linearGradient>
+    <filter id="b" width="286.8%" height="286.8%" x="-93.4%" y="-93.4%" filterUnits="objectBoundingBox">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="50"/>
+    </filter>
+  </defs>
+  <g fill="none" fill-rule="evenodd">
+    <g fill="url(#a)" transform="translate(212.741 212.741)">
+      <circle cx="113.259" cy="113.259" r="80" transform="rotate(45 113.259 113.259)"/>
+      <circle cx="113.553" cy="113.553" r="80.294" filter="url(#b)" transform="rotate(45 113.553 113.553)"/>
+    </g>
+    <g transform="rotate(-60 444.012 7.234)">
+      <g stroke="#D8D8D8" stroke-linecap="square">
+        <path d="M34.046 64.037h28.952M12.569 64.345h10.856M1.08 64.345h3.79M87.787 64.16h101.331"/>
+      </g>
+      <g stroke="#D8D8D8" stroke-linecap="square">
+        <path d="M167.792 55.488l4.262 1.551M160.194 52.625l1.598.581M175.65 58.348l14.916 5.43"/>
+      </g>
+      <g stroke="#D8D8D8" stroke-linecap="square">
+        <path d="M166.019 38.433l6.71 6.71M158.274 30.56l2.684 2.684M175.402 47.816l15.265 15.266"/>
+      </g>
+      <g stroke="#D8D8D8" stroke-linecap="square">
+        <path d="M173.933 16.468l2.876 7.903M170.21 6.312l1.079 2.964M180.579 35.066l10.068 27.665"/>
+      </g>
+      <g stroke="#D8D8D8" stroke-linecap="square">
+        <path d="M175.39 107.781l2.877-7.904M170.154 121.901l1.079-2.964M180.693 93.21l10.07-27.665"/>
+      </g>
+      <g stroke="#D8D8D8" stroke-linecap="square">
+        <path d="M167.447 87.567l4.362-4.362M159.574 95.312l1.636-1.636M175.488 79.526l15.266-15.266"/>
+      </g>
+      <g stroke="#D8D8D8" stroke-linecap="square">
+        <path d="M164.394 73.668l4.262-1.551M155.998 76.393l1.903-.703M175.65 69.774l14.918-5.43"/>
+      </g>
+      <ellipse cx="190.761" cy="64.203" fill="#D8D8D8" rx="1.5" ry="1.57"/>
+    </g>
+  </g>
+</svg>

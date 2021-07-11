@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 586 586">
+  <defs>
+    <linearGradient id="pattern2-a" x1="50%" x2="50%" y1="-10.693%" y2="113.048%">
+      <stop offset="0%" stop-color="#0B1BB3"/>
+      <stop offset="25.219%" stop-color="#5A28EB"/>
+      <stop offset="68.13%" stop-color="#E26781"/>
+      <stop offset="100%" stop-color="#FDA04F"/>
+    </linearGradient>
+    <filter id="pattern2-b" width="363.2%" height="363.2%" x="-131.6%" y="-131.6%" filterUnits="objectBoundingBox">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="50"/>
+    </filter>
+  </defs>
+  <g fill="none" fill-rule="evenodd">
+    <g transform="translate(212 212.357)">
+      <g stroke="#D8D8D8" stroke-linecap="square">
+        <path d="M146.865 103.867h-56.45M170.856 104.967h-9.914M193.734 110.977h-9.915M138.683 117.34h-9.914M178.7 104.967h-2.201M201.575 110.977h-2.2M155.718 118.048h-2.2M173.929 110.623h-62.86M114.18 116.634H75.736"/>
+      </g>
+      <circle cx="81" cy="80.759" r="57" fill="url(#pattern2-a)" fill-rule="nonzero" transform="rotate(-45 81 80.76)"/>
+      <circle cx="81" cy="80.759" r="57" fill="url(#pattern2-a)" fill-rule="nonzero" filter="url(#pattern2-b)" transform="rotate(-45 81 80.76)"/>
+    </g>
+    <path stroke="#D8D8D8" stroke-linecap="square" d="M299.837 279.317h63.64M228.412 270.839l145.57 1.4M216.398 264.473h68.095"/>
+  </g>
+</svg>

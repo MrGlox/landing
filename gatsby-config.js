@@ -1,43 +1,71 @@
 module.exports = {
   siteMetadata: {
-    siteUrl: "https://www.yourdomain.tld",
-    title: "Morgan Leroux",
+    siteUrl: 'https://www.morgan-leroux.com',
+    title: 'Morgan Leroux',
   },
   plugins: [
-    "gatsby-plugin-styled-components",
-    "gatsby-plugin-image",
     {
-      resolve: "gatsby-plugin-google-analytics",
+      resolve: 'gatsby-alias-imports',
       options: {
-        trackingId: "G-926RVV5KTB",
+        aliases: {
+          components: 'src/components/',
+          containers: 'src/containers/',
+          contexts: 'src/contexts/',
+          styles: 'src/styles',
+        },
       },
     },
-    "gatsby-plugin-react-helmet",
-    "gatsby-plugin-sitemap",
+    'gatsby-plugin-styled-components',
+    'gatsby-plugin-image',
+    'gatsby-plugin-layout',
     {
-      resolve: "gatsby-plugin-manifest",
+      resolve: 'gatsby-plugin-google-analytics',
       options: {
-        icon: "src/images/icon.png",
+        trackingId: 'G-926RVV5KTB',
       },
     },
-    "gatsby-plugin-mdx",
-    "gatsby-plugin-sharp",
-    "gatsby-transformer-sharp",
+    'gatsby-plugin-react-helmet',
+    'gatsby-plugin-sitemap',
     {
-      resolve: "gatsby-source-filesystem",
+      resolve: 'gatsby-plugin-manifest',
       options: {
-        name: "images",
-        path: "./src/images/",
+        icon: 'src/images/icon.png',
       },
-      __key: "images",
+    },
+    'gatsby-plugin-mdx',
+    {
+      resolve: 'gatsby-plugin-react-svg',
+      options: {
+        rule: {
+          include: /images/, // See below to configure properly
+        },
+      },
+    },
+    'gatsby-plugin-sharp',
+    {
+      resolve: 'gatsby-plugin-web-font-loader',
+      options: {
+        google: {
+          families: ['Inconsolata'],
+        },
+      },
+    },
+    'gatsby-transformer-sharp',
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: 'images',
+        path: './src/images/',
+      },
+      __key: 'images',
     },
     {
-      resolve: "gatsby-source-filesystem",
+      resolve: 'gatsby-source-filesystem',
       options: {
-        name: "pages",
-        path: "./src/pages/",
+        name: 'pages',
+        path: './src/pages/',
       },
-      __key: "pages",
+      __key: 'pages',
     },
   ],
 };

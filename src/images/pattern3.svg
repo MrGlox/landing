@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 987 987">
+  <defs>
+    <linearGradient id="pattern3-a" x1="50%" x2="50%" y1="-7.447%" y2="111.692%">
+      <stop offset="0%" stop-color="#F94F4F"/>
+      <stop offset="30.907%" stop-color="#F58C30"/>
+      <stop offset="74.029%" stop-color="#EB2678"/>
+      <stop offset="100%" stop-color="#FC08F8"/>
+    </linearGradient>
+    <filter id="pattern3-b" width="255.5%" height="255.5%" x="-77.8%" y="-77.8%" filterUnits="objectBoundingBox">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="50"/>
+    </filter>
+  </defs>
+  <g fill="none" fill-rule="evenodd" transform="rotate(-45 734.872 -111.278)">
+    <circle cx="136.452" cy="145.983" r="96.45" fill="url(#pattern3-a)" transform="rotate(-45 136.452 145.983)"/>
+    <circle cx="136.452" cy="145.983" r="96.45" fill="url(#pattern3-a)" filter="url(#pattern3-b)" transform="rotate(-45 136.452 145.983)"/>
+    <g stroke="#D8D8D8">
+      <path d="M176.132 66.554l8.538 3.166M143.688 54.521l22.198 8.233M118.074 45.022l22.199 8.233M98.131 38.596l15.368 5.7M85.248 32.897l4.593 1.841M118.47 91.805l-3.113 9.492M128.543 64.443l-7.962 22.297M141.34 31.314l-11.025 30.873M149.302 9.017l-4.9 13.721M151.752 2.157l-1.225 3.43M146.637 77.449l1.054 2.367M139.033 60.98l5.31 11.82M129.214 39.827l7.427 16.55M125.302 31.645l2.657 5.908M121.46 23.43l2.129 4.725M108.739 64.373l-2.31 1.102M123.801 57.303l-11.556 5.506M143.51 48.084l-17.333 8.257M154.583 41.541l-6.932 3.307M162.712 37.774l-2.31 1.105"/>
+    </g>
+  </g>
+</svg>
