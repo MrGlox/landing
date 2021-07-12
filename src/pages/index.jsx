@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
 import Canvas from 'components/Canvas';
@@ -53,20 +53,23 @@ const StyledSection = styled.section`
   }
 `;
 
-const Cube = () => {
-  const [hovered, setHovered] = useState(false);
-  const [active, setActive] = useState(false);
+// const Cube = () => {
+//   const [hovered, setHovered] = useState(false);
+//   const [active, setActive] = useState(false);
 
-  return (
-    <mesh
-      onClick={() => setActive(true)}
-      onPointerOver={() => setHovered(true)}
-      onPointerOut={() => setHovered(false)}>
-      <boxBufferGeometry attach="geometry" args={[1, 1, 1]} />
-      <meshBasicMaterial attach="material" color={!hovered ? 'grey' : 'red'} />
-    </mesh>
-  );
-};
+//   return (
+//     <mesh
+//       onClick={() => setActive(true)}
+//       onPointerOver={() => setHovered(true)}
+//       onPointerOut={() => setHovered(false)}>
+//       <boxBufferGeometry attach="geometry" args={[1, 1, 1]} />
+//       <meshBasicMaterial
+//         attach="material"
+//         color={(active && 'black') || !hovered ? 'grey' : 'red'}
+//       />
+//     </mesh>
+//   );
+// };
 
 // markup
 const IndexPage = () => (
@@ -204,9 +207,6 @@ const IndexPage = () => (
         </Socials>
       </footer>
     </Container>
-    <Canvas>
-      <Cube />
-    </Canvas>
   </StyledSection>
 );
 
