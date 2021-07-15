@@ -1,8 +1,12 @@
-import React from 'react';
+import React, { useRef, useState } from 'react';
 import styled from 'styled-components';
+import { useSpring, a } from '@react-spring/three';
+import { extend, useFrame, useThree } from '@react-three/fiber';
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 
 import Canvas from 'components/Canvas';
 import { Box, Container } from 'components/layout';
+
 import {
   Button,
   Icon,
@@ -53,23 +57,47 @@ const StyledSection = styled.section`
   }
 `;
 
-// const Cube = () => {
-//   const [hovered, setHovered] = useState(false);
-//   const [active, setActive] = useState(false);
+extend({ OrbitControls });
 
-//   return (
-//     <mesh
-//       onClick={() => setActive(true)}
-//       onPointerOver={() => setHovered(true)}
-//       onPointerOut={() => setHovered(false)}>
-//       <boxBufferGeometry attach="geometry" args={[1, 1, 1]} />
-//       <meshBasicMaterial
-//         attach="material"
-//         color={(active && 'black') || !hovered ? 'grey' : 'red'}
-//       />
-//     </mesh>
-//   );
-// };
+const Cube = () => {
+  const [hovered, setHovered] = useState(false);
+  const [active, setActive] = useState(false);
+
+  const { color, scale } = useSpring({
+    color: !hovered ? 'grey' : 'red',
+    scale: active ? [1.5, 1.5, 1.5] : [1, 1, 1],
+  });
+
+  // useFrame(() => {});
+
+  return (
+    <a.mesh
+      onClick={() => setActive(!active)}
+      onPointerOver={() => setHovered(true)}
+      onPointerOut={() => setHovered(false)}
+      scale={scale}>
+      <boxBufferGeometry attach="geometry" args={[1, 1, 1]} />
+      <a.meshBasicMaterial attach="material" color={color} />
+    </a.mesh>
+  );
+};
+
+const Controls = () => {
+  const orbitRef = useRef(null);
+  const { camera, gl } = useThree();
+
+  useFrame(() => {
+    orbitRef.current.update();
+  });
+
+  return (
+    <orbitControls
+      enableDamping
+      args={[camera, gl.domElement]}
+      ref={orbitRef}
+    />
+  );
+};
 
 // markup
 const IndexPage = () => (
@@ -207,6 +235,10 @@ const IndexPage = () => (
         </Socials>
       </footer>
     </Container>
+    <Canvas>
+      <Controls />
+      <Cube />
+    </Canvas>
   </StyledSection>
 );
 
