@@ -1,11 +1,5 @@
-import React, { useRef, useState } from 'react';
-import styled from 'styled-components';
-import { useSpring, a } from '@react-spring/three';
-import { extend, useFrame, useThree } from '@react-three/fiber';
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
-
-import Canvas from 'components/Canvas';
-import { Box, Container } from 'components/layout';
+import React, { Suspense } from 'react';
+import { ResizeObserver } from '@juggle/resize-observer';
 
 import {
   Button,
@@ -17,7 +11,14 @@ import {
   Text,
   Title,
 } from 'components/atoms';
+import { Box, Container, Section } from 'components/layouts';
 import { Socials } from 'components/molecules';
+import {
+  Canvas,
+  Camera,
+  // Cube,
+  CrossGrid,
+} from 'components/webgl';
 
 import Pattern1 from 'images/pattern1.svg';
 import Pattern2 from 'images/pattern2.svg';
@@ -26,82 +27,9 @@ import Pattern3 from 'images/pattern3.svg';
 import Twitter from 'images/twitter.svg';
 import Github from 'images/github.svg';
 
-const StyledSection = styled.section`
-  position: relative;
-  display: flex;
-  align-items: center;
-  width: 100vw;
-  min-height: 100vh;
-  overflow: hidden;
-  padding: 30px 0;
-
-  > ${Container} {
-    > header,
-    > footer {
-      position: relative;
-      display: flex;
-      justify-content: flex-end;
-      margin-bottom: 60px;
-    }
-
-    > article {
-      min-height: 40vh;
-      margin-bottom: 50px;
-    }
-
-    > footer {
-      flex-direction: column;
-      align-items: flex-end;
-      margin-bottom: 0;
-    }
-  }
-`;
-
-extend({ OrbitControls });
-
-const Cube = () => {
-  const [hovered, setHovered] = useState(false);
-  const [active, setActive] = useState(false);
-
-  const { color, scale } = useSpring({
-    color: !hovered ? 'grey' : 'red',
-    scale: active ? [1.5, 1.5, 1.5] : [1, 1, 1],
-  });
-
-  // useFrame(() => {});
-
-  return (
-    <a.mesh
-      onClick={() => setActive(!active)}
-      onPointerOver={() => setHovered(true)}
-      onPointerOut={() => setHovered(false)}
-      scale={scale}>
-      <boxBufferGeometry attach="geometry" args={[1, 1, 1]} />
-      <a.meshBasicMaterial attach="material" color={color} />
-    </a.mesh>
-  );
-};
-
-const Controls = () => {
-  const orbitRef = useRef(null);
-  const { camera, gl } = useThree();
-
-  useFrame(() => {
-    orbitRef.current.update();
-  });
-
-  return (
-    <orbitControls
-      enableDamping
-      args={[camera, gl.domElement]}
-      ref={orbitRef}
-    />
-  );
-};
-
 // markup
 const IndexPage = () => (
-  <StyledSection>
+  <Section>
     <Image
       as={Pattern3}
       position="absolute"
@@ -235,11 +163,19 @@ const IndexPage = () => (
         </Socials>
       </footer>
     </Container>
-    <Canvas>
-      <Controls />
-      <Cube />
+    <Canvas
+      orthographic
+      camera={{ fov: 10, position: [0, 0, 5], zoom: 100 }}
+      resize={{ polyfill: ResizeObserver }}>
+      {/* <color attach="background" args={['black']} /> */}
+      <Camera />
+      {/* <Cube /> */}
+      {/* <Suspense fallback={null}>
+        <ShaderImage />
+      </Suspense> */}
+      <CrossGrid />
     </Canvas>
-  </StyledSection>
+  </Section>
 );
 
 export default IndexPage;
