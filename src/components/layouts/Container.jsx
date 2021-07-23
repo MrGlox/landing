@@ -15,7 +15,7 @@ const Container = styled.div`
     }
 
     ${breakpoint.lg} {
-      max-width: 968px;
+      max-width: 1024px;
     }
   `}
 

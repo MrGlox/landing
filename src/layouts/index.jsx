@@ -1,22 +1,14 @@
 import React from 'react';
-// import styled from 'styled-components';
+import { Leva } from 'leva';
 
 import ThemeContainer, { GlobalStyle } from 'styles/index';
 
-// const StyledLayout = styled.main`
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-// `;
-
-const Layout = ({ children }) => {
-  return (
-    <ThemeContainer>
-      <GlobalStyle />
-      {/* <StyledLayout>{children}</StyledLayout> */}
-      <main>{children}</main>
-    </ThemeContainer>
-  );
-};
+const Layout = ({ children, location }) => (
+  <ThemeContainer>
+    <GlobalStyle />
+    <main>{children}</main>
+    <Leva hidden={location.hash !== '#debug'} />
+  </ThemeContainer>
+);
 
 export default Layout;

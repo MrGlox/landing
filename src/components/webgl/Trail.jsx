@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 
 import * as THREE from 'three';
-import { extend, useFrame, useLoader } from '@react-three/fiber';
+import { extend, useFrame } from '@react-three/fiber';
 import { shaderMaterial } from '@react-three/drei';
 import glsl from 'babel-plugin-glsl/macro';
 

@@ -12,6 +12,7 @@ module.exports = {
           containers: 'src/containers/',
           contexts: 'src/contexts/',
           styles: 'src/styles',
+          utils: 'src/utils',
         },
       },
     },

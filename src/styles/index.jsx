@@ -24,7 +24,7 @@ const GlobalStyle = createGlobalStyle`
     -webkit-font-smoothing: auto;
     -moz-osx-font-smoothing: grayscale;
 
-    overflow: auto;
+    overflow: hidden;
     overscroll-behavior: none;
     max-width: 100vw;
 
@@ -34,6 +34,12 @@ const GlobalStyle = createGlobalStyle`
     font-family: ${theme.fonts['body']};
     letter-spacing: 0.8px;
     line-height: ${theme.lineHeights['body']}; // ADD LINE HEIGHT FOR GOTHAM
+  }
+  
+  #___gatsby {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
   }
 `;
 

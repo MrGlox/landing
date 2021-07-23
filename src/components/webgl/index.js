@@ -2,7 +2,9 @@ import Camera from './Camera';
 import Canvas from './Canvas';
 import CrossGrid from './CrossGrid';
 import Cube from './Cube';
+import Effects from './Effects';
 import Image from './Image';
+import Planet from './Planet';
 import Trail from './Trail';
 
-export { Camera, Canvas, CrossGrid, Cube, Image, Trail };
+export { Camera, Canvas, CrossGrid, Cube, Effects, Image, Planet, Trail };
