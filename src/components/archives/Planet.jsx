@@ -1,15 +1,14 @@
 import React, { useRef } from 'react';
 
-import { useSpring, animated } from '@react-spring/three';
-import { extend } from '@react-three/fiber';
+import { extend, useThree } from '@react-three/fiber';
 import { shaderMaterial } from '@react-three/drei';
 
 import glsl from 'babel-plugin-glsl/macro';
-import { Color } from 'three';
+import { Color, Vector2 } from 'three';
 
 const defaultColors = {
   uColor1: new Color(0x4a1f7a),
-  uColor2: new Color(0x8a3761),
+  uColor2: new Color(0xcd5146),
   uColor3: new Color(0xcd5146),
   uColor4: new Color(0xffc649),
 };
@@ -17,23 +16,19 @@ const defaultColors = {
 const defaultPercents = {
   uPercent1: 0,
   uPercent2: 0.3,
-  uPercent3: 0.8,
-  uPercent4: 1.2,
+  uPercent3: 0.6,
+  uPercent4: 1,
 };
 
 const PlanetShaderMaterial = shaderMaterial(
-  { ...defaultColors, ...defaultPercents },
+  { uResolution: new Vector2(), ...defaultColors, ...defaultPercents },
   glsl`
-    varying vec2 vUv;
-
     void main() {
-      vUv = uv;
-
       gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
     }
   `,
   glsl`
-    varying vec2 vUv;
+    uniform vec2 uResolution;
 
     uniform vec3 uColor1;
     uniform vec3 uColor2;
@@ -46,10 +41,12 @@ const PlanetShaderMaterial = shaderMaterial(
     uniform float uPercent4;
 
     void main() {
+      vec2 st = gl_FragCoord.xy / uResolution;
+
       vec3 color = uColor1;
-      color = mix(uColor1, uColor2, smoothstep(uPercent1, uPercent2, vUv.x));
-      color = mix(color, uColor3, smoothstep(uPercent2, uPercent3, vUv.x));
-      color = mix(color, uColor4, smoothstep(uPercent2, uPercent4, vUv.x));
+      color = mix(uColor1, uColor2, smoothstep(uPercent1, uPercent2, st.x));
+      color = mix(color, uColor3, smoothstep(uPercent2, uPercent3, st.x));
+      color = mix(color, uColor4, smoothstep(uPercent2, uPercent4, st.x));
 
       gl_FragColor = vec4(color, 1.);
     }
@@ -63,12 +60,16 @@ const Planet = ({
   ...props
 }) => {
   const materialRef = useRef(null);
+  const {
+    size: { width, height },
+  } = useThree();
 
   return (
     <mesh {...props}>
-      <circleBufferGeometry args={[1, 64, 64]} />
+      <sphereBufferGeometry args={[1, 32, 32]} />
       <planetShaderMaterial
         ref={materialRef}
+        uResolution={new Vector2(width, height)}
         {...defaultColors}
         {...defaultPercents}
         {...uniforms}
