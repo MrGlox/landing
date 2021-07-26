@@ -82,7 +82,7 @@ const CrossShaderMaterial = shaderMaterial(
 
 extend({ CrossShaderMaterial });
 
-const Shader = () => {
+const CrossGrid = ({ ...props }) => {
   const meshRef = useRef(null);
   const materialRef = useRef(null);
 
@@ -162,11 +162,11 @@ const Shader = () => {
   }, []);
 
   return (
-    <instancedMesh ref={meshRef} args={[null, null, 480]}>
+    <instancedMesh ref={meshRef} args={[null, null, 480]} {...props}>
       <planeBufferGeometry attach="geometry" args={[0.1, 0.1, 1, 1]} />
       <crossShaderMaterial attach="material" ref={materialRef} transparent />
     </instancedMesh>
   );
 };
 
-export default Shader;
+export default CrossGrid;

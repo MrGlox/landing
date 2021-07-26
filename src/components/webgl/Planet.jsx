@@ -1,6 +1,5 @@
 import React, { useRef } from 'react';
 
-import { useSpring, animated } from '@react-spring/three';
 import { extend } from '@react-three/fiber';
 import { shaderMaterial } from '@react-three/drei';
 
@@ -15,7 +14,7 @@ const defaultColors = {
 };
 
 const defaultPercents = {
-  uPercent1: 0,
+  uPercent1: -0.1,
   uPercent2: 0.3,
   uPercent3: 0.8,
   uPercent4: 1.2,
@@ -49,7 +48,7 @@ const PlanetShaderMaterial = shaderMaterial(
       vec3 color = uColor1;
       color = mix(uColor1, uColor2, smoothstep(uPercent1, uPercent2, vUv.x));
       color = mix(color, uColor3, smoothstep(uPercent2, uPercent3, vUv.x));
-      color = mix(color, uColor4, smoothstep(uPercent2, uPercent4, vUv.x));
+      color = mix(color, uColor4, smoothstep(uPercent3, uPercent4, vUv.x));
 
       gl_FragColor = vec4(color, 1.);
     }
@@ -66,8 +65,9 @@ const Planet = ({
 
   return (
     <mesh {...props}>
-      <circleBufferGeometry args={[1, 64, 64]} />
+      <circleBufferGeometry attach="geometry" args={[1, 64, 64]} />
       <planetShaderMaterial
+        attach="material"
         ref={materialRef}
         {...defaultColors}
         {...defaultPercents}

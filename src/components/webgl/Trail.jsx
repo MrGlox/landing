@@ -1,56 +1,87 @@
 import React, { useRef } from 'react';
 
-import * as THREE from 'three';
+import { MeshLine, MeshLineMaterial } from 'meshline';
+import { Vector3 } from 'three';
 import { extend, useFrame } from '@react-three/fiber';
-import { shaderMaterial } from '@react-three/drei';
-import glsl from 'babel-plugin-glsl/macro';
 
-const WaveShaderMaterial = shaderMaterial(
-  // Uniforms
-  {
-    uColor: new THREE.Color(0.0, 0.0, 0.0),
-    uTexture: new THREE.Texture(),
-    uTime: 0,
-  },
-  // Vertex
-  glsl`
-    precision mediump float;
+extend({ MeshLine, MeshLineMaterial });
 
-    varying vec2 vUv;
+const Trails = ({ ...props }) => {
+  const speed = (1 + Math.random()) * 0.4;
 
-    void main() {
-      vUv = uv;
+  const fixedMaterial = useRef(null);
+  const largeMaterial = useRef(null);
+  const mediumMaterial = useRef(null);
+  const smallMaterial = useRef(null);
 
-      gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.);
-    }
-  `,
-  // Fragment
-  glsl`
-    precision mediump float;
-
-    uniform float uTime;
-
-    varying vec2 vUv;
-
-    void main() {
-      gl_FragColor = vec4(vUv, 1., 1.);
-    } 
-  `,
-);
-
-extend({ WaveShaderMaterial });
-
-const Shader = () => {
-  const ref = useRef(null);
-
-  useFrame(({ clock }) => (ref.current.uTime = clock.getElapsedTime()));
+  useFrame(() => {
+    largeMaterial.current.uniforms.dashOffset.value += 0.0005 * speed;
+    mediumMaterial.current.uniforms.dashOffset.value += 0.0025 * speed;
+    smallMaterial.current.uniforms.dashOffset.value += 0.003 * speed;
+  });
 
   return (
-    <mesh>
-      <planeBufferGeometry args={[0.4, 0.6, 16, 16]} />
-      <waveShaderMaterial ref={ref} uColor="hotpink" />
-    </mesh>
+    <group {...props}>
+      <mesh>
+        <meshLine
+          attach="geometry"
+          points={[new Vector3(0, 0, 0), new Vector3(0.5, 0, 0)]}
+        />
+        <meshLineMaterial
+          attach="material"
+          ref={fixedMaterial}
+          transparent
+          lineWidth={0.01}
+          color={0xffffff}
+        />
+      </mesh>
+      <mesh>
+        <meshLine
+          attach="geometry"
+          points={[new Vector3(-0.45, 0, 0), new Vector3(0.5, 0, 0)]}
+        />
+        <meshLineMaterial
+          attach="material"
+          ref={smallMaterial}
+          transparent
+          lineWidth={0.01}
+          color={0xffffff}
+          dashArray={0.1}
+          dashRatio={0.75}
+        />
+      </mesh>
+      <mesh>
+        <meshLine
+          attach="geometry"
+          points={[new Vector3(-0.35, 0, 0), new Vector3(0.5, 0, 0)]}
+        />
+        <meshLineMaterial
+          attach="material"
+          ref={mediumMaterial}
+          transparent
+          lineWidth={0.01}
+          color={0xffffff}
+          dashArray={0.5}
+          dashRatio={0.65}
+        />
+      </mesh>
+      <mesh>
+        <meshLine
+          attach="geometry"
+          points={[new Vector3(-0.15, 0, 0), new Vector3(0.5, 0, 0)]}
+        />
+        <meshLineMaterial
+          attach="material"
+          ref={largeMaterial}
+          transparent
+          lineWidth={0.01}
+          color={0xffffff}
+          dashArray={0.1}
+          dashRatio={0.5}
+        />
+      </mesh>
+    </group>
   );
 };
 
-export default Shader;
+export default Trails;

@@ -1,3 +1,7 @@
-import PlanetPattern1 from './PlanetPattern1';
+import CoordsPattern from './Patterns/Coords';
+import IntroPattern from './Patterns/Intro';
+import MainPattern from './Patterns/Main';
 
-export { PlanetPattern1 };
+import Socials from './Socials';
+
+export { CoordsPattern, IntroPattern, MainPattern, Socials };
