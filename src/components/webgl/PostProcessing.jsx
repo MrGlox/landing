@@ -1,43 +1,35 @@
 import React from 'react';
 
-import { EffectComposer, Bloom } from '@react-three/postprocessing';
-import { KernelSize } from 'postprocessing';
+import {
+  EffectComposer,
+  Bloom,
+  BrightnessContrast,
+  Vignette,
+  Noise,
+} from '@react-three/postprocessing';
+import { BlendFunction, KernelSize } from 'postprocessing';
 
-// import { useControls } from 'leva';
-
-const PostProcessing = () => {
-  // const {
-  //   multisampling,
-  //   kernelSize,
-  //   luminanceThreshold,
-  //   luminanceSmoothing,
-  //   intensity,
-  // } = useControls('Effect Composer', {
-  //   multisampling: 4,
-  //   bloom: folder({
-  //     kernelSize: 2,
-  //     luminanceThreshold: 0,
-  //     luminanceSmoothing: 0.1,
-  //     intensity: 0.2,
-  //   }),
-  // });
-
-  return (
-    <EffectComposer multisampling={8}>
-      <Bloom
-        kernelSize={5}
-        luminanceThreshold={0.4}
-        luminanceSmoothing={0.4}
-        intensity={0.2}
-      />
-      <Bloom
-        kernelSize={KernelSize.HUGE}
-        luminanceThreshold={0.1}
-        luminanceSmoothing={0.4}
-        intensity={0.3}
-      />
-    </EffectComposer>
-  );
-};
+const PostProcessing = () => (
+  <EffectComposer multisampling={8}>
+    <Bloom
+      blendFunction={BlendFunction.ADD}
+      kernelSize={KernelSize.SMALL}
+      luminanceThreshold={0.2}
+      luminanceSmoothing={0.6}
+      height={120}
+      opacity={1.5}
+    />
+    <Bloom
+      kernelSize={KernelSize.HUGE}
+      luminanceThreshold={0.1}
+      luminanceSmoothing={0.2}
+      height={10}
+      opacity={2.5}
+    />
+    <Noise premultiply blendFunction={BlendFunction.ADD} opacity={0.25} />
+    <Vignette eskil={false} offset={0.1} darkness={0.25} />
+    <BrightnessContrast brightness={-0.123} contrast={0.1} />
+  </EffectComposer>
+);
 
 export default PostProcessing;

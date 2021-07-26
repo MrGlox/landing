@@ -32,9 +32,9 @@ const Main = ({ elementRef, offset = [0, 0, 0] }) => {
           uColor2: 0x49cbf5,
           uColor3: 0xaa68f9,
           uColor4: 0xfc08f8,
-          uPercent1: -0.1,
-          uPercent2: 0.2,
-          uPercent3: 0.6,
+          uPercent1: -0,
+          uPercent2: 0.1,
+          uPercent3: 0.7,
           uPercent4: 1.1,
         }}
         position={[0.6, 0.35, 0.1]}

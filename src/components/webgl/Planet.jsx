@@ -8,15 +8,15 @@ import { Color } from 'three';
 
 const defaultColors = {
   uColor1: new Color(0x4a1f7a),
-  uColor2: new Color(0x8a3761),
-  uColor3: new Color(0xcd5146),
-  uColor4: new Color(0xffc649),
+  uColor2: new Color(0x901e4b),
+  uColor3: new Color(0xee1e0c),
+  uColor4: new Color(0xca8f0c),
 };
 
 const defaultPercents = {
-  uPercent1: -0.1,
-  uPercent2: 0.3,
-  uPercent3: 0.8,
+  uPercent1: 0,
+  uPercent2: 0.4,
+  uPercent3: 0.7,
   uPercent4: 1.2,
 };
 

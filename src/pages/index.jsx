@@ -3,7 +3,7 @@ import { ResizeObserver } from '@juggle/resize-observer';
 
 import { Legend, Link, Text, Title } from 'components/atoms';
 import { Box, Container, Section } from 'components/layouts';
-import { Canvas, Camera, CrossGrid } from 'components/webgl';
+import { Canvas, Camera, CrossGrid, PostProcessing } from 'components/webgl';
 
 import { CoordsPattern, IntroPattern, MainPattern, Socials } from 'containers';
 
@@ -26,6 +26,7 @@ const IndexPage = () => {
 
         {/* Globals */}
         <Camera />
+        <PostProcessing />
         <color attach="background" args={['#060826']} />
       </Canvas>
       <Section>
