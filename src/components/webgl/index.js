@@ -7,6 +7,7 @@ import Image from './Image';
 import Planet from './Planet';
 import PostProcessing from './PostProcessing';
 import Trail from './Trail';
+import Universe from './Universe';
 
 export {
   Camera,
@@ -18,4 +19,5 @@ export {
   Planet,
   PostProcessing,
   Trail,
+  Universe,
 };

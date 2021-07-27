@@ -3,30 +3,30 @@ import { ResizeObserver } from '@juggle/resize-observer';
 
 import { Legend, Link, Text, Title } from 'components/atoms';
 import { Box, Container, Section } from 'components/layouts';
-import { Canvas, Camera, CrossGrid, PostProcessing } from 'components/webgl';
+import { Canvas, Camera, CrossGrid, Universe } from 'components/webgl';
 
-import { CoordsPattern, IntroPattern, MainPattern, Socials } from 'containers';
+import { Socials } from 'containers';
 
 // markup
 const IndexPage = () => {
-  const coordsPattern = useRef(null);
+  const coordsRef = useRef(null);
   const contentRef = useRef(null);
   const introRef = useRef(null);
 
   return (
     <>
       <Canvas resize={{ polyfill: ResizeObserver }}>
-        {/* Planets part */}
-        <CoordsPattern offset={[-1.2, -1.5, 0.01]} elementRef={coordsPattern} />
-        <MainPattern offset={[-0.25, 0.05, 0.01]} elementRef={contentRef} />
-        <IntroPattern offset={[0.2, 0.05, 0.01]} elementRef={introRef} />
-
         {/* Cross part */}
         <CrossGrid position={[0, 0, 0.3]} scale={[0.9, 0.9, 0.9]} />
 
+        <Universe
+          coordsRef={coordsRef}
+          contentRef={contentRef}
+          introRef={introRef}
+        />
+
         {/* Globals */}
         <Camera />
-        <PostProcessing />
         <color attach="background" args={['#060826']} />
       </Canvas>
       <Section>
@@ -101,7 +101,7 @@ const IndexPage = () => {
             </Container>
           </article>
           <footer>
-            <Legend ref={coordsPattern}>coords</Legend>
+            <Legend ref={coordsRef}>coords</Legend>
             <Socials />
           </footer>
         </Container>
