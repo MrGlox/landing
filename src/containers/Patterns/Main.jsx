@@ -25,9 +25,8 @@ const Main = ({ elementRef, offset = [0, 0, 0] }) => {
 
   return (
     <group position={[x + offset[0], y + offset[1], offset[2]]}>
-      <Planet glowSize={2.8} rotation={[0, 0, -Math.PI / 1.5]} scale={0.7} />
+      <Planet rotation={[0, 0, -Math.PI / 1.5]} scale={0.7} />
       <Planet
-        glowSize={4.2}
         uniforms={{
           uColor1: 0x3cfafe,
           uColor2: 0x2ca7cf,

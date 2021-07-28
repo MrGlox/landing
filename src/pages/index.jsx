@@ -26,11 +26,12 @@ const IndexPage = () => {
           depth: false,
         }}
         resize={{ polyfill: ResizeObserver }}>
-        <color attach="background" args={['#0A0B25']} />
+        <color attach="background" args={['#010210']} />
 
         {/* Cross part */}
         <CrossGrid position={[0, 0, 0.3]} scale={[0.9, 0.9, 0.9]} />
 
+        {/* Planets part */}
         <Universe
           coordsRef={coordsRef}
           contentRef={contentRef}

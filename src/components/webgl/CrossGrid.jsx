@@ -10,9 +10,9 @@ import { Matrix4, Vector3 } from 'three';
 import { roundedSquareWave } from 'utils';
 
 const uniforms = {
-  uAlpha: 0.4,
+  uAlpha: 0.2,
   uSize: 1,
-  uThinning: 4.2,
+  uThinning: 6.2,
 };
 
 const CrossShaderMaterial = shaderMaterial(

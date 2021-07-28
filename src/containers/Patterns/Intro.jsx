@@ -27,6 +27,7 @@ const Intro = ({ elementRef, offset = [0, 0, 0] }) => {
     <group position={[x + offset[0], y + offset[1], offset[2]]}>
       <Clouds position={[-0, 0.2, 0]} />
       <Planet
+        glowSize={3.4}
         uniforms={{
           uColor1: 0xfda04f,
           uColor2: 0xe26781,

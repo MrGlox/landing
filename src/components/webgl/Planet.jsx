@@ -14,6 +14,7 @@ const defaultColors = {
 };
 
 const defaultPercents = {
+  uAlpha: 0.8,
   uPercent1: 0,
   uPercent2: 0.4,
   uPercent3: 0.7,
@@ -69,6 +70,7 @@ const BlurShaderMaterial = shaderMaterial(
   glsl`
     varying vec2 vUv;
     uniform vec2 uSize;
+    uniform float uAlpha;
 
     uniform vec3 uColor1;
     uniform vec3 uColor2;
@@ -89,9 +91,9 @@ const BlurShaderMaterial = shaderMaterial(
       vec2 st = (vUv - .5) * 2.;
       float dispersion = length(st) * 1.;
       dispersion = 1. - dispersion;
-      dispersion = dispersion * dispersion * dispersion;
+      dispersion = dispersion * dispersion;
 
-      gl_FragColor = vec4(color, dispersion);
+      gl_FragColor = vec4(color, dispersion * uAlpha);
     }
   `,
 );
@@ -99,6 +101,7 @@ const BlurShaderMaterial = shaderMaterial(
 extend({ BlurShaderMaterial, PlanetShaderMaterial });
 
 const Planet = ({
+  alpha = 0.4,
   glowSize = 3.2,
   uniforms = { ...defaultColors, ...defaultPercents },
   ...props
@@ -114,10 +117,11 @@ const Planet = ({
           transparent
           attach="material"
           ref={blurRef}
-          uSize={new Vector2(64, 64)}
           {...defaultColors}
           {...defaultPercents}
           {...uniforms}
+          uAlpha={alpha}
+          uSize={new Vector2(64, 64)}
         />
       </mesh>
       <mesh>
