@@ -10,7 +10,7 @@ import { Canvas, Camera, CrossGrid, Universe } from 'components/webgl';
 import { Socials } from 'containers';
 
 // markup
-const IndexPage = () => {
+const IndexPage = ({ location }) => {
   const coordsRef = useRef(null);
   const contentRef = useRef(null);
   const introRef = useRef(null);
@@ -40,7 +40,9 @@ const IndexPage = () => {
 
         {/* Globals */}
         <Camera />
-        <Perf className="perf-stats" position="top-left" />
+        {location.hash === '#debug' && (
+          <Perf className="perf-stats" position="top-left" />
+        )}
       </Canvas>
       <Section>
         <Container position="relative">
