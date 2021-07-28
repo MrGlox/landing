@@ -53,5 +53,8 @@
     "styled-normalize": "^8.0.7",
     "styled-system": "^5.1.5",
     "three": "^0.130.1"
+  },
+  "devDependencies": {
+    "r3f-perf": "^4.8.1"
   }
 }

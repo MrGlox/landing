@@ -41,6 +41,10 @@ const GlobalStyle = createGlobalStyle`
     height: 100vh;
     overflow: hidden;
   }
+
+  .perf-stats{
+    z-index: 10000;
+  }
 `;
 
 const ThemeContainer = ({ children }) => (

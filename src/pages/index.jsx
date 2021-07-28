@@ -1,5 +1,7 @@
 import React, { useRef } from 'react';
+
 import { ResizeObserver } from '@juggle/resize-observer';
+import { Perf } from 'r3f-perf';
 
 import { Legend, Link, Text, Title } from 'components/atoms';
 import { Box, Container, Section } from 'components/layouts';
@@ -15,7 +17,17 @@ const IndexPage = () => {
 
   return (
     <>
-      <Canvas resize={{ polyfill: ResizeObserver }}>
+      <Canvas
+        gl={{
+          powerPreference: 'high-performance',
+          alpha: false,
+          antialias: false,
+          stencil: false,
+          depth: false,
+        }}
+        resize={{ polyfill: ResizeObserver }}>
+        <color attach="background" args={['#0A0B25']} />
+
         {/* Cross part */}
         <CrossGrid position={[0, 0, 0.3]} scale={[0.9, 0.9, 0.9]} />
 
@@ -27,7 +39,7 @@ const IndexPage = () => {
 
         {/* Globals */}
         <Camera />
-        <color attach="background" args={['#060826']} />
+        <Perf className="perf-stats" position="top-left" />
       </Canvas>
       <Section>
         <Container position="relative">

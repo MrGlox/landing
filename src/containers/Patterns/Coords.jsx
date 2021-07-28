@@ -26,6 +26,7 @@ const Coords = ({ elementRef, offset = [0, 0, 0] }) => {
   return (
     <group position={[x + offset[0], y + offset[1], offset[2]]}>
       <Planet
+        glowSize={2.8}
         uniforms={{
           uColor1: 0xf94f4f,
           uColor2: 0xf58c30,
