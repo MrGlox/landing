@@ -18,7 +18,7 @@ const Socials = () => (
         href="https://twitter.com/MisterGlox"
         target="_blank"
         rel="noopener noreferrer">
-        <Icon as={Twitter} />
+        <Icon as={Twitter} alt="Twitter" />
       </Button>
     </li>
     <li>
@@ -26,7 +26,7 @@ const Socials = () => (
         href="https://github.com/MrGlox"
         target="_blank"
         rel="noopener noreferrer">
-        <Icon as={Github} />
+        <Icon as={Github} alt="Github" />
       </Button>
     </li>
   </SocialsComponent>

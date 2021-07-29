@@ -61,9 +61,9 @@ const IndexPage = ({ location }) => {
               </header>
               <Box ref={contentRef} as="main" mb="m" maxWidth="420px">
                 <Text fontSize={{ sm: '4' }}>
-                  I’m{' '}
+                  I’m Morgan{' '}
                   <Text as="span" fontWeight="bold">
-                    MrGlox
+                    &quot;MrGlox&quot;
                   </Text>
                   ,{' '}
                   <Text as="span" fontWeight="bold">

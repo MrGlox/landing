@@ -32,10 +32,10 @@ const Main = ({ elementRef, offset = [0, 0, 0] }) => {
           uColor2: 0x2ca7cf,
           uColor3: 0x994bf6,
           uColor4: 0xfc08f8,
-          uPercent1: -0.1,
+          uPercent1: -0.2,
           uPercent2: 0.3,
           uPercent3: 0.7,
-          uPercent4: 1.1,
+          uPercent4: 1.2,
         }}
         position={[0.6, 0.4, 0.1]}
         rotation={[0, 0, Math.PI * 0.75]}

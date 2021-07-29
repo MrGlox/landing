@@ -1,7 +1,12 @@
 module.exports = {
   siteMetadata: {
-    siteUrl: 'https://www.morgan-leroux.com',
     title: 'Morgan Leroux',
+    titleTemplate: '%s - Creative Developer',
+    description:
+      'I’m Morgan "MrGlox", Creative developer from France. I like to build beautiful websites with clean interactions and animations.',
+    url: 'https://www.morgan-leroux.com', // No trailing slash allowed!
+    image: '/images/banner.jpg', // Path to your image you placed in the 'static' folder
+    twitterUsername: '@MisterGlox',
   },
   plugins: [
     {
@@ -16,6 +21,7 @@ module.exports = {
         },
       },
     },
+    'gatsby-image',
     'gatsby-plugin-styled-components',
     'gatsby-plugin-image',
     'gatsby-plugin-layout',
