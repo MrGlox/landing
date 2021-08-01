@@ -25,3 +25,6 @@ export const updatePosition = ({ top, left }, camera, size, z) => {
     y: relativePosition.y * camUnit.height,
   };
 };
+
+export const vhToPixel = (value) => `${(window.innerHeight * value) / 100}px`;
+export const vwToPixel = (value) => `${(window.innerWidth * value) / 100}px`;

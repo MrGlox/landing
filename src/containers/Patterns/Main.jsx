@@ -37,7 +37,7 @@ const Main = ({ elementRef, offset = [0, 0, 0] }) => {
           uPercent3: 0.7,
           uPercent4: 1.2,
         }}
-        position={[0.6, 0.4, 0.1]}
+        position={[0.6, 0.41, 0.1]}
         rotation={[0, 0, Math.PI * 0.75]}
         scale={0.45}
       />
