@@ -26,8 +26,6 @@ const IndexPage = ({ location }) => {
           depth: false,
         }}
         resize={{ polyfill: ResizeObserver }}>
-        <color attach="background" args={['#010210']} />
-
         {/* Cross part */}
         <CrossGrid position={[0, 0, 0.3]} scale={[0.9, 0.9, 0.9]} />
 
@@ -40,6 +38,7 @@ const IndexPage = ({ location }) => {
 
         {/* Globals */}
         <Camera />
+        <color attach="background" args={['#010210']} />
         {location.hash === '#debug' && (
           <Perf className="perf-stats" position="top-left" />
         )}
@@ -55,12 +54,12 @@ const IndexPage = ({ location }) => {
               px={{ _: '0', sm: '0' }}
               maxWidth={{ _: '320px', lg: '694px' }}>
               <header>
-                <Title as="h1" mb="32px">
+                <Title as="h2" mb="32px" fontSize={{ sm: 6 }}>
                   Salutations !
                 </Title>
               </header>
               <Box ref={contentRef} as="main" mb="m" maxWidth="420px">
-                <Text fontSize={{ sm: '4' }}>
+                <Text fontSize={{ sm: 4 }}>
                   I’m Morgan{' '}
                   <Text as="span" fontWeight="bold">
                     &quot;MrGlox&quot;

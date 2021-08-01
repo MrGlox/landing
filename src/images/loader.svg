@@ -1,11 +1,17 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1767 1770">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 664 664">
   <defs>
-    <linearGradient id="a" x1="82.951%" x2="17.32%" y1="83.067%" y2="17.205%">
+    <linearGradient id="loader-a" x1="50%" x2="50%" y1="96.764%" y2="3.62%">
       <stop offset="0%" stop-color="#3CFAFE"/>
       <stop offset="25.7%" stop-color="#2CA7CF"/>
       <stop offset="63.313%" stop-color="#994BF6"/>
       <stop offset="100%" stop-color="#FC08F8"/>
     </linearGradient>
+    <filter id="loader-b" width="278.2%" height="278.2%" x="-89.1%" y="-89.1%" filterUnits="objectBoundingBox">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="50"/>
+    </filter>
   </defs>
-  <path fill="url(#a)" fill-rule="evenodd" d="M882.944 1769c487.636 0 882.943-396.004 882.943-884.5S1370.58 0 882.944 0C395.307 0 0 396.004 0 884.5S395.307 1769 882.944 1769z" transform="translate(.344 .74)"/>
+  <g fill="url(#loader-a)" fill-rule="evenodd" transform="translate(213 213)">
+    <path d="M119.037 203.283c46.446 0 84.098-37.718 84.098-84.246 0-46.528-37.652-84.246-84.098-84.246S34.939 72.51 34.939 119.037c0 46.528 37.652 84.246 84.098 84.246z"/>
+    <path d="M59.466 178.608c32.842 32.842 86.137 32.795 119.037-.105 32.9-32.9 32.947-86.195.105-119.037-32.842-32.842-86.137-32.795-119.037.105-32.9 32.9-32.947 86.195-.105 119.037z" filter="url(#loader-b)" transform="rotate(-45 119.037 119.037)"/>
+  </g>
 </svg>
