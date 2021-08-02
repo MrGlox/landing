@@ -33,7 +33,7 @@ const Main = ({ elementRef, offset = [0, 0, 0] }) => {
   const [groupProps, groupAPI] = useSpring(() => ({
     config: config.molasses,
     from: {
-      position: [x + offset[0] - 4, y + offset[1], offset[2]],
+      position: [x + offset[0] - 8, y + offset[1], offset[2]],
     },
   }));
 
@@ -72,7 +72,6 @@ const Main = ({ elementRef, offset = [0, 0, 0] }) => {
     });
 
     if (first) return;
-
     markerAPI.start({
       delay: 500,
       position: [x + offset[0] + 0.6, y + offset[1] + 0.41, offset[2] + 0.1],
