@@ -86,35 +86,35 @@ const CrossGrid = ({ ...props }) => {
   const meshRef = useRef(null);
   const materialRef = useRef(null);
 
-  useControls('Cross', {
-    uAlpha: {
-      value: uniforms.uAlpha,
-      min: 0,
-      max: 1,
-      step: 0.01,
-      onChange: (value) => {
-        materialRef.current.uniforms.uAlpha.value = value;
-      },
-    },
-    uSize: {
-      value: uniforms.uSize,
-      min: 0,
-      max: 1,
-      step: 0.01,
-      onChange: (value) => {
-        materialRef.current.uniforms.uSize.value = value;
-      },
-    },
-    uThinning: {
-      value: uniforms.uThinning,
-      min: 0,
-      max: 140,
-      step: 0.1,
-      onChange: (value) => {
-        materialRef.current.uniforms.uThinning.value = value;
-      },
-    },
-  });
+  // useControls('Cross', {
+  //   uAlpha: {
+  //     value: uniforms.uAlpha,
+  //     min: 0,
+  //     max: 1,
+  //     step: 0.01,
+  //     onChange: (value) => {
+  //       materialRef.current.uniforms.uAlpha.value = value;
+  //     },
+  //   },
+  //   uSize: {
+  //     value: uniforms.uSize,
+  //     min: 0,
+  //     max: 1,
+  //     step: 0.01,
+  //     onChange: (value) => {
+  //       materialRef.current.uniforms.uSize.value = value;
+  //     },
+  //   },
+  //   uThinning: {
+  //     value: uniforms.uThinning,
+  //     min: 0,
+  //     max: 140,
+  //     step: 0.1,
+  //     onChange: (value) => {
+  //       materialRef.current.uniforms.uThinning.value = value;
+  //     },
+  //   },
+  // });
 
   const { vec, transform, positions, distances } = useMemo(() => {
     const vec = new Vector3();

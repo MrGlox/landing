@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-import { animated, config, useSpring } from '@react-spring/web';
+import { a, config, useSpring } from '@react-spring/web';
 import styled from 'styled-components';
 
 import Planet from 'images/loader.svg';
@@ -20,7 +20,7 @@ const StyledLoader = styled.div`
   transform: translate3d(-50%, -50%, 0);
 `;
 
-const Wrapper = styled(animated.div)`
+const Wrapper = styled(a.div)`
   position: relative;
 
   display: flex;
@@ -31,30 +31,31 @@ const Wrapper = styled(animated.div)`
   height: 100vh;
 `;
 
-const StyledPlanet = styled(animated(Planet))`
+const StyledPlanet = styled(Planet)`
   position: absolute;
   top: 50%;
   left: 50%;
 
   min-width: 100vw;
   min-height: 100vh;
+  transform: translate3d(-50%, -50%, 0) scale3d(6, 6, 1);
 `;
 
 const Loader = ({ ...props }) => {
+  const [display, setDisplay] = useState(true);
   const animation = useSpring({
-    config: { duration: 2500 },
-    from: { x: '-50%', y: '-50%', z: 0, scale3d: [5, 5, 1] },
-    x: '-25%',
-    y: '35%',
-    z: 0,
-    scale3d: [1, 1, 1],
+    config: config.stiff,
+    from: { opacity: 1 },
+    opacity: 0,
+    onRest: () => setDisplay(false),
   });
 
   return (
-    <StyledLoader {...props}>
-      <Wrapper>
-        <StyledPlanet style={animation} />
-        {/* <h1>
+    display && (
+      <StyledLoader {...props}>
+        <Wrapper style={animation}>
+          <StyledPlanet />
+          {/* <h1>
           I'm M<span className="toHide">o</span>r
           <span className="toReplace">g</span>
           <span className="toHide">a</span>
@@ -62,8 +63,9 @@ const Loader = ({ ...props }) => {
           <span className="toHide">e</span>
           <span className="toHide">r</span>o<span className="toHide">u</span>x
         </h1> */}
-      </Wrapper>
-    </StyledLoader>
+        </Wrapper>
+      </StyledLoader>
+    )
   );
 };
 

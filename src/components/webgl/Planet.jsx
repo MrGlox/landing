@@ -1,5 +1,6 @@
 import React, { useRef } from 'react';
 
+import { a } from '@react-spring/three';
 import { extend } from '@react-three/fiber';
 import { shaderMaterial } from '@react-three/drei';
 
@@ -110,8 +111,8 @@ const Planet = ({
   const blurRef = useRef(null);
 
   return (
-    <group {...props}>
-      <mesh position={[0, 0, -0.1]}>
+    <a.group {...props}>
+      <mesh position={[0, 0, 0.05]}>
         <circleBufferGeometry attach="geometry" args={[glowSize, 64, 64]} />
         <blurShaderMaterial
           transparent
@@ -134,7 +135,7 @@ const Planet = ({
           {...uniforms}
         />
       </mesh>
-    </group>
+    </a.group>
   );
 };
 

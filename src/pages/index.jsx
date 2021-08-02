@@ -17,15 +17,7 @@ const IndexPage = ({ location }) => {
 
   return (
     <>
-      <Canvas
-        gl={{
-          powerPreference: 'high-performance',
-          alpha: false,
-          antialias: false,
-          stencil: false,
-          depth: false,
-        }}
-        resize={{ polyfill: ResizeObserver }}>
+      <Canvas concurrent resize={{ polyfill: ResizeObserver }}>
         {/* Cross part */}
         <CrossGrid position={[0, 0, 0.3]} scale={[0.9, 0.9, 0.9]} />
 

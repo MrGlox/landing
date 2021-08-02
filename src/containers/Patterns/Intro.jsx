@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo } from 'react';
+import { a, config, useSpring } from '@react-spring/three';
 import { useThree } from '@react-three/fiber';
 
 import { Clouds, Planet, Trail } from 'components/webgl';
@@ -6,25 +7,33 @@ import { updatePosition } from 'utils';
 
 const Intro = ({ elementRef, offset = [0, 0, 0] }) => {
   const { camera, size } = useThree();
-  const [{ x, y }, setPosition] = useState(
-    elementRef.current.getBoundingClientRect(),
+  const { x, y } = useMemo(
+    () =>
+      updatePosition(
+        elementRef.current.getBoundingClientRect(),
+        camera,
+        size,
+        offset[2],
+      ),
+    [size],
   );
+
+  const [props, api] = useSpring(() => ({
+    config: config.molasses,
+    from: { position: [x + offset[0] + 4, y + offset[1] - 0.05, 1] },
+    position: [x + offset[0], y + offset[1], offset[2]],
+  }));
 
   // resize listener
   useEffect(() => {
-    // position helper
-    const { x, y } = updatePosition(
-      elementRef.current.getBoundingClientRect(),
-      camera,
-      size,
-      offset[2],
-    );
-
-    setPosition({ x, y });
+    api.start({
+      delay: 2500,
+      position: [x + offset[0], y + offset[1], offset[2]],
+    });
   }, [size]);
 
   return (
-    <group position={[x + offset[0], y + offset[1], offset[2]]}>
+    <a.group {...props}>
       <Clouds position={[-0, 0.2, 0]} />
       <Planet
         glowSize={3.4}
@@ -49,7 +58,7 @@ const Intro = ({ elementRef, offset = [0, 0, 0] }) => {
         <Trail position={[-0.8, -0.32, 0]} />
         <Trail position={[-1, -0.25, 0]} />
       </group>
-    </group>
+    </a.group>
   );
 };
 
