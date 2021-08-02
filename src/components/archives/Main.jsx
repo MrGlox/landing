@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useRef, useState } from 'react';
+import React, { useEffect, useMemo, useRef } from 'react';
 
 import { useThree } from '@react-three/fiber';
 import { a, config, useSpring } from '@react-spring/three';
@@ -9,7 +9,7 @@ import { updatePosition } from 'utils';
 
 const Main = ({ elementRef, offset = [0, 0, 0] }) => {
   const markerRef = useRef(null);
-  const [first, setFirst] = useState(true);
+  const pathRef = useRef(null);
 
   const { camera, size } = useThree();
   const { x, y, offsetX, offsetY } = useMemo(() => {
@@ -30,20 +30,26 @@ const Main = ({ elementRef, offset = [0, 0, 0] }) => {
     return { x, y, offsetX: center.x, offsetY: center.y };
   }, [size]);
 
-  const [groupProps, groupAPI] = useSpring(() => ({
+  const groupProps = useSpring({
     config: config.molasses,
     from: {
       position: [x + offset[0] - 4, y + offset[1], offset[2]],
     },
-  }));
+    position: [x + offset[0], y + offset[1], offset[2]],
+  });
 
   const { curve, points } = useMemo(() => {
     const curve = new THREE.CatmullRomCurve3([
-      new THREE.Vector3(0, 0, 0.1),
+      new THREE.Vector3(0, 0, 0),
       new THREE.Vector3(
-        x - offsetX / 3 + offset[0],
-        y + offsetY + offset[1],
-        offset[2] + 0.1,
+        x + offsetX * 0.2 + offset[0],
+        y + offsetY * 0.3 + offset[1],
+        offset[2],
+      ),
+      new THREE.Vector3(
+        x + offsetX * 0.4 + offset[0],
+        y - offsetY * 0.2 + offset[1],
+        offset[2],
       ),
       new THREE.Vector3(
         x + offset[0] + 0.6,
@@ -53,6 +59,8 @@ const Main = ({ elementRef, offset = [0, 0, 0] }) => {
     ]);
 
     const points = curve.getPoints(100);
+    console.log(curve);
+
     return { curve, points };
   }, [points]);
 
@@ -66,20 +74,6 @@ const Main = ({ elementRef, offset = [0, 0, 0] }) => {
   }));
 
   useEffect(() => {
-    groupAPI.start({
-      delay: 1500,
-      position: [x + offset[0], y + offset[1], offset[2]],
-    });
-
-    if (first) return;
-
-    markerAPI.start({
-      delay: 500,
-      position: [x + offset[0] + 0.6, y + offset[1] + 0.41, offset[2] + 0.1],
-    });
-  }, [size]);
-
-  useEffect(() => {
     markerAPI.start({
       percent: 1,
       scale: 0.45,
@@ -88,12 +82,16 @@ const Main = ({ elementRef, offset = [0, 0, 0] }) => {
         markerRef.current.position.set(x, y, z);
       },
     });
-
-    setFirst(false);
-  }, []);
+  });
 
   return (
     <>
+      {/* {window.location.hash === '#debug' && (
+        <line>
+          <bufferGeometry ref={pathRef} attach="geometry" onUpdate={onUpdate} />
+          <lineBasicMaterial attach="material" color={0xff0000} />
+        </line>
+      )} */}
       <a.group {...groupProps}>
         <Planet rotation={[0, 0, -Math.PI / 1.5]} scale={0.7} />
         <Trail position={[-0.7, -0.18, 0.08]} />

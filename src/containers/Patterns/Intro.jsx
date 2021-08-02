@@ -7,7 +7,6 @@ import { updatePosition } from 'utils';
 
 const Intro = ({ elementRef, offset = [0, 0, 0] }) => {
   const { camera, size } = useThree();
-
   const { x, y } = useMemo(
     () =>
       updatePosition(
@@ -27,7 +26,10 @@ const Intro = ({ elementRef, offset = [0, 0, 0] }) => {
 
   // resize listener
   useEffect(() => {
-    api.start({ position: [x + offset[0], y + offset[1], offset[2]] });
+    api.start({
+      delay: 2500,
+      position: [x + offset[0], y + offset[1], offset[2]],
+    });
   }, [size]);
 
   return (

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { animated, useSpring } from '@react-spring/web';
+import { a, config, useSpring } from '@react-spring/web';
 import styled from 'styled-components';
 
 import Planet from 'images/loader.svg';
@@ -20,7 +20,7 @@ const StyledLoader = styled.div`
   transform: translate3d(-50%, -50%, 0);
 `;
 
-const Wrapper = styled(animated.div)`
+const Wrapper = styled(a.div)`
   position: relative;
 
   display: flex;
@@ -44,6 +44,7 @@ const StyledPlanet = styled(Planet)`
 const Loader = ({ ...props }) => {
   const [display, setDisplay] = useState(true);
   const animation = useSpring({
+    config: config.stiff,
     from: { opacity: 1 },
     opacity: 0,
     onRest: () => setDisplay(false),
