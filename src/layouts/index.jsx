@@ -11,7 +11,7 @@ const Layout = ({ children, location }) => (
     <GlobalStyle />
     <main>{children}</main>
     <Leva hidden={location.hash !== '#debug'} />
-    {/* <Loader /> */}
+    <Loader />
   </ThemeContainer>
 );
 
