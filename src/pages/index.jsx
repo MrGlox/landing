@@ -46,7 +46,7 @@ const IndexPage = ({ location }) => {
               px={{ _: '0', sm: '0' }}
               maxWidth={{ _: '320px', lg: '694px' }}>
               <header>
-                <Title as="h2" mb="32px" fontSize={{ sm: 6 }}>
+                <Title as="h2" mb="32px" fontSize={{ _: 5, sm: 6 }}>
                   Salutations !
                 </Title>
               </header>

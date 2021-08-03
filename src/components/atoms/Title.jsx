@@ -5,7 +5,7 @@ const StyledTitle = styled.p`
   letter-spacing: 0.8px;
 
   ${({ as, theme: { breakpoint, fontSizes, lineHeights, space } }) => css`
-    margin-bottom: ${space.m}
+    margin-bottom: ${space.m};
     font-size: ${as ? fontSizes[5 - Number(as.slice(-1))] : fontSizes[4]}px;
     line-height: ${lineHeights[0]};
 

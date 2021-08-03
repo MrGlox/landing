@@ -33,7 +33,7 @@ const Intro = ({ elementRef, offset = [0, 0, 0] }) => {
   }, [size]);
 
   return (
-    <a.group {...props}>
+    <a.group {...props} scale={1.2}>
       <Clouds position={[-0, 0.2, 0]} />
       <Planet
         glowSize={3.4}
