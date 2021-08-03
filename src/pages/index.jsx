@@ -80,7 +80,7 @@ const IndexPage = ({ location }) => {
                     rel="noopener noreferrer">
                     freelance
                   </Link>{' '}
-                  \o/, formely at{' '}
+                  \o/, formerly at{' '}
                   <Link
                     href="https://tresorio.com/"
                     target="_blank"
