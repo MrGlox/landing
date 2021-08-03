@@ -36,8 +36,8 @@ const StyledPlanet = styled(Planet)`
   top: 50%;
   left: 50%;
 
-  min-width: 100vw;
-  min-height: 100vh;
+  min-width: 150vw;
+  min-height: 150vh;
   transform: translate3d(-50%, -50%, 0) scale3d(6, 6, 1);
 `;
 
