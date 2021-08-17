@@ -30,6 +30,7 @@ module.exports = {
       resolve: 'gatsby-plugin-google-analytics',
       options: {
         trackingId: 'G-926RVV5KTB',
+        head: false,
       },
     },
     'gatsby-plugin-react-helmet',
