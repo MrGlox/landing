@@ -1,7 +1,3 @@
-require('dotenv').config({
-  path: `.env.${process.env.NODE_ENV}`,
-});
-
 module.exports = {
   siteMetadata: {
     title: 'Morgan Leroux',
@@ -30,15 +26,18 @@ module.exports = {
     'gatsby-plugin-styled-components',
     'gatsby-plugin-image',
     'gatsby-plugin-layout',
-    {
-      resolve: 'gatsby-plugin-google-analytics',
-      options: {
-        trackingId: process.env.GA_TRACKING_ID,
-        head: false,
-      },
-    },
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-sitemap',
+    {
+      resolve: `gatsby-plugin-google-gtag`,
+      options: {
+        // You can add multiple tracking ids and a pageview event will be fired for all of them.
+        trackingIds: [
+          'G-Y9S1P2YDLT', // Google Analytics / GA
+        ],
+        // This object gets passed directly to the gtag config command
+      },
+    },
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
