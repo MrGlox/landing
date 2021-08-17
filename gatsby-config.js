@@ -1,3 +1,7 @@
+require('dotenv').config({
+  path: `.env.${process.env.NODE_ENV}`,
+});
+
 module.exports = {
   siteMetadata: {
     title: 'Morgan Leroux',
@@ -29,7 +33,7 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-google-analytics',
       options: {
-        trackingId: 'G-Y9S1P2YDLT',
+        trackingId: process.env.GA_TRACKING_ID,
         head: false,
       },
     },
