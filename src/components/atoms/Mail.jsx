@@ -1,7 +1,9 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from "react";
+import styled from "styled-components";
 
-const StyledMail = styled.div`
+const Mail = ({ children, ...props }) => <div {...props}>{children}</div>;
+
+const StyledMail = styled(Mail)`
   font-weight: bold;
   font-size: 20px;
   color: white;
@@ -27,8 +29,6 @@ const StyledMail = styled.div`
   }
 `;
 
-const Mail = ({ children, ...props }) => (
-  <StyledMail {...props}>{children}</StyledMail>
-);
 
-export default Mail;
+
+export default StyledMail;

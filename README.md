@@ -1,4 +1,4 @@
-[![Netlify Status](https://api.netlify.com/api/v1/badges/9cfa28bd-c3d6-4ec7-9c03-946246ff6971/deploy-status)](https://app.netlify.com/sites/heuristic-hermann-427430/deploys)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/9cfa28bd-c3d6-4ec7-9c03-946246ff6971/deploy-status)](https://app.netlify.com/sites/mrglox-tsneqchr-127352/deploys)
 
 <p align="center">
   <a href="https://www.gatsbyjs.com/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter">
