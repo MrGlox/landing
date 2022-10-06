@@ -1,11 +1,11 @@
-import React, { useEffect, useMemo, useRef, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from "react";
 
-import { useThree } from '@react-three/fiber';
-import { a, config, useSpring } from '@react-spring/three';
-import * as THREE from 'three';
+import { useThree } from "@react-three/fiber";
+import { a, config, useSpring } from "@react-spring/three";
+import * as THREE from "three";
 
-import { Planet, Trail } from 'components/webgl';
-import { updatePosition } from 'utils';
+import { Planet, Trail } from "components/webgl";
+import { updatePosition } from "utils";
 
 const Main = ({ elementRef, offset = [0, 0, 0] }) => {
   const markerRef = useRef(null);
@@ -17,14 +17,14 @@ const Main = ({ elementRef, offset = [0, 0, 0] }) => {
       elementRef.current.getBoundingClientRect(),
       camera,
       size,
-      offset[2],
+      offset[2]
     );
 
     const center = updatePosition(
       { top: size.height, left: size.width },
       camera,
       size,
-      offset[2],
+      offset[2]
     );
 
     return { x, y, offsetX: center.x, offsetY: center.y };
@@ -32,6 +32,7 @@ const Main = ({ elementRef, offset = [0, 0, 0] }) => {
 
   const [groupProps, groupAPI] = useSpring(() => ({
     config: config.molasses,
+    precision: 0.00001,
     from: {
       position: [x + offset[0] - 8, y + offset[1], offset[2]],
     },
@@ -43,12 +44,12 @@ const Main = ({ elementRef, offset = [0, 0, 0] }) => {
       new THREE.Vector3(
         x - offsetX / 3 + offset[0],
         y + offsetY + offset[1],
-        offset[2] + 0.1,
+        offset[2] + 0.1
       ),
       new THREE.Vector3(
         x + offset[0] + 0.6,
         y + offset[1] + 0.41,
-        offset[2] + 0.1,
+        offset[2] + 0.1
       ),
     ]);
 
@@ -59,6 +60,7 @@ const Main = ({ elementRef, offset = [0, 0, 0] }) => {
   // const onUpdate = useCallback((self) => self.setFromPoints(points), [points]);
   const [markerProps, markerAPI] = useSpring(() => ({
     config: config.molasses,
+    precision: 0.00001,
     from: {
       percent: 0,
       scale: 8,
@@ -102,7 +104,8 @@ const Main = ({ elementRef, offset = [0, 0, 0] }) => {
       <a.group
         ref={markerRef}
         // scale={scale}
-        {...markerProps}>
+        {...markerProps}
+      >
         <Planet
           uniforms={{
             uColor1: 0x3cfafe,

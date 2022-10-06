@@ -1,9 +1,9 @@
-import React, { useEffect, useMemo } from 'react';
-import { a, config, useSpring } from '@react-spring/three';
-import { useThree } from '@react-three/fiber';
+import React, { useEffect, useMemo } from "react";
+import { a, config, useSpring } from "@react-spring/three";
+import { useThree } from "@react-three/fiber";
 
-import { Clouds, Planet, Trail } from 'components/webgl';
-import { updatePosition } from 'utils';
+import { Clouds, Planet, Trail } from "components/webgl";
+import { updatePosition } from "utils";
 
 const Intro = ({ elementRef, offset = [0, 0, 0] }) => {
   const { camera, size } = useThree();
@@ -13,13 +13,14 @@ const Intro = ({ elementRef, offset = [0, 0, 0] }) => {
         elementRef.current.getBoundingClientRect(),
         camera,
         size,
-        offset[2],
+        offset[2]
       ),
-    [size],
+    [size]
   );
 
   const [props, api] = useSpring(() => ({
     config: config.molasses,
+    precision: 0.00001,
     from: { position: [x + offset[0] + 4, y + offset[1] - 0.05, 1] },
     position: [x + offset[0], y + offset[1], offset[2]],
   }));
@@ -53,7 +54,8 @@ const Intro = ({ elementRef, offset = [0, 0, 0] }) => {
       <group
         rotation={[0, 0, Math.PI]}
         position={[-0.1, -0.4, -0.1]}
-        scale={[0.7, 0.7, 0.7]}>
+        scale={[0.7, 0.7, 0.7]}
+      >
         <Trail position={[-0.6, -0.18, 0]} />
         <Trail position={[-0.8, -0.32, 0]} />
         <Trail position={[-1, -0.25, 0]} />

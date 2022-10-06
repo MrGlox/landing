@@ -1,10 +1,10 @@
-import React, { useEffect, useMemo } from 'react';
+import React, { useEffect, useMemo } from "react";
 
-import { a, config, useSpring } from '@react-spring/three';
-import { useThree } from '@react-three/fiber';
+import { a, config, useSpring } from "@react-spring/three";
+import { useThree } from "@react-three/fiber";
 
-import { Planet, Trail } from 'components/webgl';
-import { updatePosition } from 'utils';
+import { Planet, Trail } from "components/webgl";
+import { updatePosition } from "utils";
 
 const Coords = ({ elementRef, offset = [0, 0, 0] }) => {
   const { camera, size } = useThree();
@@ -13,12 +13,13 @@ const Coords = ({ elementRef, offset = [0, 0, 0] }) => {
       elementRef.current.getBoundingClientRect(),
       camera,
       size,
-      offset[2],
-    ),
+      offset[2]
+    )
   );
 
   const [trailProps, trailAPI] = useSpring(() => ({
     config: config.molasses,
+    precision: 0.00001,
     from: {
       scale: [1.4, 1.4, 1.4],
       rotation: [0, 0, -Math.PI * 2],
@@ -27,6 +28,7 @@ const Coords = ({ elementRef, offset = [0, 0, 0] }) => {
 
   const [groupProps, groupAPI] = useSpring(() => ({
     config: config.molasses,
+    precision: 0.00001,
     from: {
       position: [x + offset[0] + 4, y + offset[1] - 4, offset[2]],
     },

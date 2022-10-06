@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
-import { a, config, useSpring } from '@react-spring/web';
-import styled from 'styled-components';
+import { a, config, useSpring } from "@react-spring/web";
+import styled from "styled-components";
 
-import Planet from 'images/loader.svg';
+import Planet from "images/loader.svg";
 
 const StyledLoader = styled.div`
   position: fixed;
@@ -45,6 +45,7 @@ const Loader = ({ ...props }) => {
   const [display, setDisplay] = useState(true);
   const animation = useSpring({
     config: config.stiff,
+    precision: 0.00001,
     from: { opacity: 1 },
     opacity: 0,
     onRest: () => setDisplay(false),
