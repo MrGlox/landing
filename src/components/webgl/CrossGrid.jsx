@@ -1,13 +1,13 @@
-import React, { useLayoutEffect, useMemo, useRef } from 'react';
-import glsl from 'babel-plugin-glsl/macro';
+import React, { useLayoutEffect, useMemo, useRef } from "react";
+import glsl from "babel-plugin-glsl/macro";
 
-import { extend, useFrame } from '@react-three/fiber';
-import { shaderMaterial } from '@react-three/drei';
+import { extend, useFrame } from "@react-three/fiber";
+import { shaderMaterial } from "@react-three/drei";
 
-import { useControls } from 'leva';
-import { Matrix4, Vector3 } from 'three';
+import { useControls } from "leva";
+import { Matrix4, Vector3 } from "three";
 
-import { roundedSquareWave } from 'utils';
+import { roundedSquareWave } from "utils";
 
 const uniforms = {
   uAlpha: 0.2,
@@ -63,21 +63,21 @@ const CrossShaderMaterial = shaderMaterial(
       return uv.x * uv.y;
     }
     
-    float cross(in vec2 _st, float _size, float _thinning){
+    float crossItem(in vec2 _st, float _size, float _thinning){
       return  box(_st, vec2(_size, _size / _thinning)) +
         box(_st, vec2(_size / _thinning, _size));
     }
 
     void main() {
       vec4 color = vec4(0.0);
-      color += vec4(cross(vUv, uSize, uThinning));
+      color += vec4(crossItem(vUv, uSize, uThinning));
 
       // FOR GRID VALUE
       // color += vec4(cross(vUv, 1.2, 100.));
 
       gl_FragColor = vec4(color.rgb, step(.5, color.w) * uAlpha);
     } 
-  `,
+  `
 );
 
 extend({ CrossShaderMaterial });
